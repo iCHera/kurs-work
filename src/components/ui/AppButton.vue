@@ -50,7 +50,6 @@ const componentTag = computed(() => {
 
 const isRouterLink = computed(() => props.tag === 'RouterLink')
 const isAnchor = computed(() => props.tag === 'a')
-
 const isButton = computed(() => props.tag === 'button')
 </script>
 

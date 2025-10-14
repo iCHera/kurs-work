@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<template>
+  <h1>catalog</h1>
+</template>
 
-<!-- <template></template> -->
+<script setup lang="ts"></script>
 
 <style scoped></style>

@@ -11,7 +11,6 @@
           :key="link.name"
           :to="link.path"
           class="header-nav-link"
-          active-class="active"
         >
           {{ link.name }}
         </RouterLink>
@@ -56,19 +55,19 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import AppButton from '@/components/ui/AppButton.vue'
+import type { RouteLocationRaw } from 'vue-router'
 
 interface NavLink {
   name: string
-  path: string
+  path: string | RouteLocationRaw
 }
 
 const siteName = 'Куросвые работы'
 
 const navLinks: NavLink[] = [
-  { name: 'Главная', path: '/' },
+  { name: 'Обо мне', path: { name: 'Home', hash: '#about' } },
+  { name: 'Услуги', path: { name: 'Home', hash: '#services' } },
   { name: 'Каталог', path: '/catalog' },
-  { name: 'Услуги', path: '/#services' },
-  { name: 'Обо мне', path: '/#about' },
 ]
 
 const isMobileMenuOpen = ref(false)
