@@ -1,5 +1,5 @@
 <template>
-  <section id="services">
+  <section id="services" class="services-section section">
     <h1>услуги 1</h1>
     <h1>услуги</h1>
     <h1>услуги</h1>
@@ -56,4 +56,9 @@
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style scoped>
+.services-section {
+  margin-top: -60px;
+  padding: 70px var(--spacing-md);
+}
+</style>

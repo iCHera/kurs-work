@@ -111,7 +111,7 @@ const toggleMobileMenu = () => {
 .header-nav-link {
   color: var(--color-text-dark);
   padding: 5px 0;
-  transition: color 0.7s ease;
+  transition: color 0.3s ease;
   position: relative;
   cursor: pointer;
 }
