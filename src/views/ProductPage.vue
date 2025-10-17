@@ -24,12 +24,4 @@ const product = computed<CourseItem | undefined>(() => {
 })
 </script>
 
-<style scoped>
-.product-page {
-  padding: 0;
-}
-
-.section {
-  padding-top: 0;
-}
-</style>
+<style scoped></style>

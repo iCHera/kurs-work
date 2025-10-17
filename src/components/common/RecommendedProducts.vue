@@ -13,7 +13,7 @@
         >
           <div class="course-card">
             <div class="card-image-box">
-              <img :src="getImageUrl(item.imagePath)" :alt="item.title" class="card-image" />
+              <img :src="`${base}${item.imagePath}`" :alt="item.title" class="card-image" />
             </div>
 
             <div class="card-header-content">
@@ -42,6 +42,8 @@ import { computed } from 'vue'
 import { courseCatalog, type CourseItem } from '@/data/catalog'
 import AppButton from '@/components/ui/AppButton.vue'
 
+const base = import.meta.env.BASE_URL
+
 const props = defineProps<{
   currentProductId: string | number
 }>()
@@ -51,10 +53,6 @@ const recommendedProducts = computed<CourseItem[]>(() => {
 
   return courseCatalog.filter((item) => item.id !== excludeId)
 })
-
-function getImageUrl(path: string): string {
-  return new URL(path, import.meta.url).href
-}
 </script>
 
 <style scoped>

@@ -17,7 +17,7 @@
         >
           <div class="course-card">
             <div class="card-image-box">
-              <img :src="getImageUrl(item.imagePath)" :alt="item.title" class="card-image" />
+              <img :src="item.imagePath" :alt="item.title" class="card-image" />
             </div>
 
             <!-- Иконка и Заголовок -->
@@ -53,10 +53,6 @@
 import { courseCatalog } from '@/data/catalog'
 import AppButton from '@/components/ui/AppButton.vue'
 import { RouterLink } from 'vue-router'
-
-function getImageUrl(path: string): string {
-  return new URL(path, import.meta.url).href
-}
 </script>
 
 <style scoped>

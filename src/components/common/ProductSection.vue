@@ -8,14 +8,14 @@
     <div class="product-details-main-grid">
       <div class="product-visuals">
         <div class="product-image-box" @click="openFullScreen()">
-          <img :src="currentImagePath" :alt="product.title" class="product-image" />
+          <img :src="`${base}${currentImagePath}`" :alt="product.title" class="product-image" />
         </div>
 
         <div class="gallery-thumbnails">
           <img
             v-for="(imagePath, index) in allImagePaths"
             :key="index"
-            :src="getImageUrl(imagePath)"
+            :src="`${base}${imagePath}`"
             :alt="`${product.title} скриншот ${index + 1}`"
             class="thumbnail-image"
             @click="setMainImage(imagePath)"
@@ -47,7 +47,7 @@
   <Transition name="fade-in-out">
     <div v-if="fullScreenImage" class="fullscreen-overlay">
       <div class="fullscreen-image-container">
-        <img :src="getImageUrl(fullScreenImage)" :alt="product.title" class="fullscreen-image" />
+        <img :src="`${base}${fullScreenImage}`" :alt="product.title" class="fullscreen-image" />
       </div>
       <span class="close-button-lightbox" @click="closeFullScreen"> &times; </span>
     </div>
@@ -59,6 +59,8 @@ import { ref } from 'vue'
 import type { CourseItem } from '@/data/catalog'
 import AppButton from '@/components/ui/AppButton.vue'
 
+const base = import.meta.env.BASE_URL
+
 const props = defineProps<{ product: CourseItem }>()
 
 const currentImagePath = ref(props.product.imagePath)
@@ -67,10 +69,6 @@ const allImagePaths = [props.product.imagePath, ...props.product.galleryPaths]
 
 function setMainImage(newPath: string) {
   currentImagePath.value = newPath
-}
-
-function getImageUrl(path: string): string {
-  return new URL(path, import.meta.url).href
 }
 
 const fullScreenImage = ref<string | null>(null)
