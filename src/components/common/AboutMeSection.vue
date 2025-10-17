@@ -65,7 +65,7 @@ import AppButton from '@/components/ui/AppButton.vue'
 
 <style scoped>
 .about-section {
-  margin-top: -60px;
+  /* margin-top: -60px; */
   background-color: var(--color-background);
   padding: 70px var(--spacing-md);
   color: var(--color-text-dark);

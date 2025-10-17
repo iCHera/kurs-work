@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 
 const Home = () => import('@/views/HomePage.vue')
-const Catalog = () => import('@/views/CatalogPage.vue')
+const Product = () => import('@/views/ProductPage.vue')
 const NotFound = () => import('@/views/NotFoundPage.vue')
 
 const routes: Array<RouteRecordRaw> = [
@@ -12,9 +12,10 @@ const routes: Array<RouteRecordRaw> = [
   },
 
   {
-    path: '/catalog',
-    name: 'Catalog',
-    component: Catalog,
+    path: '/product/:id',
+    name: 'Product',
+    component: Product,
+    props: true,
   },
 
   {

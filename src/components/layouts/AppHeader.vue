@@ -17,7 +17,9 @@
       </nav>
 
       <div class="header-actions">
-        <AppButton class="desktop-only" tag="a" href="#contact-form"> Заказать работу </AppButton>
+        <AppButton class="desktop-only" tag="a" href="https:/t.me/Ilya_Belove" target="_blank">
+          Заказать работу
+        </AppButton>
 
         <button
           class="hamburger mobile-only"
@@ -44,7 +46,13 @@
         >
           {{ link.name }}
         </RouterLink>
-        <AppButton tag="a" href="#contact-form" class="mobile-cta" @click="toggleMobileMenu">
+        <AppButton
+          tag="a"
+          href="https:/t.me/Ilya_Belove"
+          target="_blank"
+          class="mobile-cta"
+          @click="toggleMobileMenu"
+        >
           Заказать работу
         </AppButton>
       </nav>
@@ -67,7 +75,7 @@ const siteName = 'Куросвые работы'
 const navLinks: NavLink[] = [
   { name: 'Обо мне', path: { name: 'Home', hash: '#about' } },
   { name: 'Услуги', path: { name: 'Home', hash: '#services' } },
-  { name: 'Каталог', path: '/catalog' },
+  { name: 'Каталог', path: { name: 'Home', hash: '#catalog' } },
 ]
 
 const isMobileMenuOpen = ref(false)
@@ -80,8 +88,10 @@ const toggleMobileMenu = () => {
 
 <style scoped>
 .app-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
   background-color: var(--color-background);
   border-bottom: 1px solid var(--color-border);
@@ -128,10 +138,6 @@ const toggleMobileMenu = () => {
   display: flex;
 }
 
-/* ----------------------------------------------------
-   Медиа-запрос для Мобильных устройств (до 768px)
-   ---------------------------------------------------- */
-
 @media (max-width: 768px) {
   .desktop-only {
     display: none;
@@ -145,11 +151,11 @@ const toggleMobileMenu = () => {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    /* padding: 10px; */
     z-index: 1010;
     position: relative;
     height: 40px;
-    width: 40px;
+    width: 80px;
   }
 
   .hamburger .line {
@@ -191,7 +197,7 @@ const toggleMobileMenu = () => {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background-color: var(--color-background);
     z-index: 999;
     display: flex;
@@ -228,7 +234,7 @@ const toggleMobileMenu = () => {
   }
 
   .header-logo {
-    padding-left: 6px;
+    /* padding-left: 6px; */
   }
 
   .mobile-menu[data-v-if] {
