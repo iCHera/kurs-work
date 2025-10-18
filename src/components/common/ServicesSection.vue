@@ -88,7 +88,7 @@ import AppButton from '@/components/ui/AppButton.vue'
 .services-section {
   background-color: var(--color-background);
   margin-top: -60px;
-  padding: 70px var(--spacing-md);
+  padding: 70px var(--spacing-md) 0 var(--spacing-md);
   color: var(--color-text-dark);
 }
 
