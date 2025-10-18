@@ -33,7 +33,7 @@
 
             <div class="card-footer">
               <span class="card-price">{{ item.price }} BYN</span>
-              <AppButton size="sm" tag="button" variant="primary"> Подробнее → </AppButton>
+              <AppButton size="sm" tag="button" variant="primary"> Подробнее</AppButton>
             </div>
           </div>
         </RouterLink>
@@ -41,8 +41,14 @@
 
       <footer class="catalog-footer">
         <p>Не нашли свою тему? Мы готовы обсудить индивидуальный проект любой сложности.</p>
-        <AppButton tag="a" href="https:/t.me/Ilya_Belove" target="_blank" variant="text">
-          Заполнить заявку на индивидуальный проект →
+        <AppButton
+          tag="a"
+          href="https:/t.me/Ilya_Belove"
+          target="_blank"
+          variant="text"
+          class="app-buttob-zakaz"
+        >
+          Напишите мне!
         </AppButton>
       </footer>
     </div>
@@ -58,7 +64,7 @@ import { RouterLink } from 'vue-router'
 <style scoped>
 .catalog-section {
   background-color: var(--color-background-dark);
-  padding: 80px var(--spacing-md);
+  padding: 80px var(--spacing-md) 20px var(--spacing-md);
   color: var(--color-text-light);
 }
 
@@ -187,6 +193,9 @@ import { RouterLink } from 'vue-router'
   text-align: center;
   margin-top: 50px;
   color: var(--color-text-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .catalog-footer p {
@@ -195,7 +204,7 @@ import { RouterLink } from 'vue-router'
 
 @media (max-width: 768px) {
   .catalog-section {
-    padding: 30px var(--spacing-md);
+    padding: 65px var(--spacing-md) 15px var(--spacing-md);
     margin-top: 70px;
   }
 }

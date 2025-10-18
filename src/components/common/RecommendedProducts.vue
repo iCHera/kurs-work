@@ -1,5 +1,4 @@
 <template>
-  <!-- Используем id="recommended" для якоря, если понадобится -->
   <section id="recommended" class="recommended-section section">
     <div class="container">
       <h1 class="section-title-recommend">Смотрите также</h1>
@@ -28,7 +27,7 @@
 
             <div class="card-footer">
               <span class="card-price">{{ item.price }} BYN</span>
-              <AppButton size="sm" tag="button" variant="primary"> Подробнее → </AppButton>
+              <AppButton size="sm" tag="button" variant="primary"> Подробнее </AppButton>
             </div>
           </div>
         </RouterLink>
@@ -175,7 +174,7 @@ const recommendedProducts = computed<CourseItem[]>(() => {
 }
 
 .card-price {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-primary);
 }

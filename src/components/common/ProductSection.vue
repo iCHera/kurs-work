@@ -2,7 +2,6 @@
   <div class="product-details-content">
     <div class="product-header">
       <h1 class="product-title">{{ product.title }}</h1>
-      <p class="product-price">{{ product.price }} BYN</p>
     </div>
 
     <div class="product-details-main-grid">
@@ -31,15 +30,20 @@
           <span v-for="tag in product.tags" :key="tag" class="tag">{{ tag }}</span>
         </div>
 
-        <AppButton
-          tag="a"
-          href="#contact-form"
-          variant="primary"
-          size="lg"
-          class="cta-button-details"
-        >
-          Заказать работу
-        </AppButton>
+        <div class="product-price-button">
+          <p class="product-price">{{ product.price }} BYN</p>
+
+          <AppButton
+            tag="a"
+            href="https:/t.me/Ilya_Belove"
+            target="_blank"
+            variant="primary"
+            size="lg"
+            class="cta-button-details"
+          >
+            Заказать работу
+          </AppButton>
+        </div>
       </div>
     </div>
   </div>
@@ -55,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, onUnmounted, computed } from 'vue'
 import type { CourseItem } from '@/data/catalog'
 import AppButton from '@/components/ui/AppButton.vue'
 
@@ -65,7 +69,18 @@ const props = defineProps<{ product: CourseItem }>()
 
 const currentImagePath = ref(props.product.imagePath)
 
-const allImagePaths = [props.product.imagePath, ...props.product.galleryPaths]
+const allImagePaths = computed(() => {
+  return [props.product.imagePath, ...props.product.galleryPaths]
+})
+
+watch(
+  () => props.product.imagePath,
+  (newImagePath) => {
+    currentImagePath.value = newImagePath
+
+    fullScreenImage.value = null
+  },
+)
 
 function setMainImage(newPath: string) {
   currentImagePath.value = newPath
@@ -80,6 +95,18 @@ function openFullScreen() {
 function closeFullScreen() {
   fullScreenImage.value = null
 }
+
+function toggleBodyScroll(isOpen: boolean) {
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+}
+
+watch(fullScreenImage, (newValue) => {
+  toggleBodyScroll(!!newValue)
+})
+
+onUnmounted(() => {
+  document.body.style.overflow = ''
+})
 </script>
 
 <style scoped>
@@ -98,6 +125,12 @@ function closeFullScreen() {
   margin-bottom: 40px;
 }
 
+.product-info-block {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .product-title {
   font-size: 2.5rem;
   color: var(--color-primary);
@@ -108,6 +141,7 @@ function closeFullScreen() {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-text-light);
+  margin-bottom: 0;
 }
 
 .product-details-main-grid {
@@ -115,6 +149,14 @@ function closeFullScreen() {
   grid-template-columns: 1fr;
   gap: 40px;
   padding: 0 var(--spacing-lg);
+}
+
+.product-price-button {
+  margin-top: auto;
+  margin-bottom: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media (min-width: 900px) {
@@ -216,8 +258,8 @@ function closeFullScreen() {
 }
 
 .fullscreen-image {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 95%;
+  max-height: 95%;
   object-fit: contain;
 }
 
@@ -255,6 +297,15 @@ function closeFullScreen() {
   .fullscreen-image-container {
     height: 100vh;
     padding: 0;
+  }
+
+  .product-price-button {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .product-title {
+    font-size: 1.5rem;
   }
 }
 </style>

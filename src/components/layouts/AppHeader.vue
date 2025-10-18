@@ -52,6 +52,7 @@
           target="_blank"
           class="mobile-cta"
           @click="toggleMobileMenu"
+          size="lg"
         >
           Заказать работу
         </AppButton>
@@ -105,7 +106,6 @@ const toggleMobileMenu = () => {
   height: 60px;
 }
 
-/* Логотип */
 .header-logo {
   font-size: 1.5rem;
   font-weight: 700;
@@ -167,7 +167,7 @@ const toggleMobileMenu = () => {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    transition: all 0.7s ease;
+    transition: all 0.3s ease;
   }
 
   .hamburger .line-1 {
@@ -214,7 +214,7 @@ const toggleMobileMenu = () => {
 
   .slide-right-enter-active,
   .slide-right-leave-active {
-    transition: transform 0.7s ease-in-out;
+    transition: transform 0.3s ease-in-out;
   }
 
   .slide-right-enter-to,
@@ -230,11 +230,8 @@ const toggleMobileMenu = () => {
   }
 
   .mobile-cta {
-    margin-top: var(--spacing-xl);
-  }
-
-  .header-logo {
-    /* padding-left: 6px; */
+    margin-top: auto;
+    margin-bottom: 60px;
   }
 
   .mobile-menu[data-v-if] {
