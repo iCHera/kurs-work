@@ -1,61 +1,63 @@
 <template>
-  <div class="product-details-content">
-    <div class="product-header">
-      <h1 class="product-title">{{ product.title }}</h1>
-    </div>
-
-    <div class="product-details-main-grid">
-      <div class="product-visuals">
-        <div class="product-image-box" @click="openFullScreen()">
-          <img :src="`${base}${currentImagePath}`" :alt="product.title" class="product-image" />
-        </div>
-
-        <div class="gallery-thumbnails">
-          <img
-            v-for="(imagePath, index) in allImagePaths"
-            :key="index"
-            :src="`${base}${imagePath}`"
-            :alt="`${product.title} скриншот ${index + 1}`"
-            class="thumbnail-image"
-            @click="setMainImage(imagePath)"
-          />
-        </div>
+  <section class="container section">
+    <div class="product-details-content">
+      <div class="product-header">
+        <h1 class="product-title">{{ product.title }}</h1>
       </div>
 
-      <div class="product-info-block">
-        <h3 class="info-subtitle">О проекте</h3>
-        <p class="product-description-full">{{ product.description }}</p>
+      <div class="product-details-main-grid">
+        <div class="product-visuals">
+          <div class="product-image-box" @click="openFullScreen()">
+            <img :src="`${base}${currentImagePath}`" :alt="product.title" class="product-image" />
+          </div>
 
-        <div class="tags-container">
-          <span v-for="tag in product.tags" :key="tag" class="tag">{{ tag }}</span>
+          <div class="gallery-thumbnails">
+            <img
+              v-for="(imagePath, index) in allImagePaths"
+              :key="index"
+              :src="`${base}${imagePath}`"
+              :alt="`${product.title} скриншот ${index + 1}`"
+              class="thumbnail-image"
+              @click="setMainImage(imagePath)"
+            />
+          </div>
         </div>
 
-        <div class="product-price-button">
-          <p class="product-price">{{ product.price }} BYN</p>
+        <div class="product-info-block">
+          <h3 class="info-subtitle">О проекте</h3>
+          <p class="product-description-full">{{ product.description }}</p>
 
-          <AppButton
-            tag="a"
-            href="https:/t.me/Ilya_Belove"
-            target="_blank"
-            variant="primary"
-            size="lg"
-            class="cta-button-details"
-          >
-            Заказать работу
-          </AppButton>
+          <div class="tags-container">
+            <span v-for="tag in product.tags" :key="tag" class="tag">{{ tag }}</span>
+          </div>
+
+          <div class="product-price-button">
+            <p class="product-price">{{ product.price }} BYN</p>
+
+            <AppButton
+              tag="a"
+              href="https:/t.me/Ilya_Belove"
+              target="_blank"
+              variant="primary"
+              size="lg"
+              class="cta-button-details"
+            >
+              Заказать работу
+            </AppButton>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <Transition name="fade-in-out">
-    <div v-if="fullScreenImage" class="fullscreen-overlay">
-      <div class="fullscreen-image-container">
-        <img :src="`${base}${fullScreenImage}`" :alt="product.title" class="fullscreen-image" />
+    <Transition name="fade-in-out">
+      <div v-if="fullScreenImage" class="fullscreen-overlay">
+        <div class="fullscreen-image-container">
+          <img :src="`${base}${fullScreenImage}`" :alt="product.title" class="fullscreen-image" />
+        </div>
+        <span class="close-button-lightbox" @click="closeFullScreen"> &times; </span>
       </div>
-      <span class="close-button-lightbox" @click="closeFullScreen"> &times; </span>
-    </div>
-  </Transition>
+    </Transition>
+  </section>
 </template>
 
 <script setup lang="ts">

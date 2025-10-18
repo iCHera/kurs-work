@@ -61,6 +61,11 @@ const recommendedProducts = computed<CourseItem[]>(() => {
   color: var(--color-text-light);
 }
 
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 .section-title-recommend {
   color: var(--color-primary);
   text-align: center;

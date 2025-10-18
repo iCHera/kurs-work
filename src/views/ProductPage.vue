@@ -1,12 +1,12 @@
 <template>
-  <section class="product-page container section">
+  <section class="product-page">
     <div v-if="!product" class="not-found-message">
       <h2>Продукт с ID {{ props.id }} не найден</h2>
       <p>Проверьте корректность ссылки.</p>
     </div>
 
     <ProductSection v-else :product="product" />
-    <RecommendedProducts :current-product-id="props.id" />
+    <RecommendedProducts :current-product-id="props.id" class="RecommendedProducts" />
   </section>
 </template>
 
@@ -24,4 +24,10 @@ const product = computed<CourseItem | undefined>(() => {
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.RecommendedProducts {
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-background-dark);
+}
+</style>
