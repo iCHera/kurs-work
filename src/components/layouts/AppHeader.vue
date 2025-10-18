@@ -76,6 +76,7 @@ const siteName = 'Куросвые работы'
 const navLinks: NavLink[] = [
   { name: 'Обо мне', path: { name: 'Home', hash: '#about' } },
   { name: 'Услуги', path: { name: 'Home', hash: '#services' } },
+  { name: 'Контакты', path: { name: 'Home', hash: '#contact' } },
   { name: 'Каталог', path: { name: 'Home', hash: '#catalog' } },
 ]
 
