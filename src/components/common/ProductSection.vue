@@ -258,8 +258,8 @@ onUnmounted(() => {
 }
 
 .fullscreen-image {
-  max-width: 95%;
-  max-height: 95%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
@@ -297,6 +297,11 @@ onUnmounted(() => {
   .fullscreen-image-container {
     height: 100vh;
     padding: 0;
+  }
+
+  .fullscreen-image {
+    max-width: 85%;
+    max-height: 85%;
   }
 
   .product-price-button {
